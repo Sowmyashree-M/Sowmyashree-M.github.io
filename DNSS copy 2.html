@@ -17,20 +17,17 @@
   </div>
 
 <script>
-
-
-function sendToSecuriti(consentData) {
-  console.log("Entering to record the consent")
-  fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    function acceptCookies() {
+      alert("You have accepted cookies!");
+      document.getElementById('cookieBanner').style.display = 'none';
+      console.log("Entering to record the consent")
+      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'vUSYAPJOEz5Or7lZSMy1tw6O2pe0ljw7s8X8HVV4'
     },
     body: JSON.stringify({
-     
-
-
 "uuids": {
         "email": "itsme.sowmyashree@gmail.com",
         
@@ -62,25 +59,6 @@ function sendToSecuriti(consentData) {
       console.error("Failed to send consent", response.statusText);
     }
   });
-}
-
-    function acceptCookies() {
-      alert("You have accepted cookies!");
-      document.getElementById('cookieBanner').style.display = 'none';
-    
-    const consentData = {
-    purpose: "cookie_tracking",
-    status: "accepted",
-   
-    consent_status: "Granted",
-    
-    timestamp: new Date().toISOString()
-  
-
-  sendToSecuriti(consentData);
-}
-
-    }
 
 
     function rejectCookies() {
@@ -88,9 +66,9 @@ function sendToSecuriti(consentData) {
       document.getElementById('cookieBanner').style.display = 'none';
     }
 
-
-
-
+    
+    
+}
 
   </script>
 
