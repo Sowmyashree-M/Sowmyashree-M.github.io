@@ -261,6 +261,26 @@ console.log("Visitor ID:", visitorId);
     function rejectCookies() {
       alert("You have rejected cookies!");
       document.getElementById('cookieBanner').style.display = 'none';
+      console.log("Entering to record the consent")
+    function getVisitorId() {
+    const localStorageKey = 'visitor_id';
+
+    // Check if ID already exists
+    let visitorId = localStorage.getItem(localStorageKey);
+
+    if (!visitorId) {
+        // Generate new UUID
+        visitorId = crypto.randomUUID(); // This creates a v4 UUID
+        localStorage.setItem(localStorageKey, visitorId);
+    }
+
+    return visitorId;
+}
+
+// Usage
+const visitorId = getVisitorId();
+console.log("Visitor ID:", visitorId);
+
        fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
     method: 'POST',
     headers: {
@@ -292,7 +312,13 @@ console.log("Visitor ID:", visitorId);
         }
     ]
 })
-  })
+  }).then(response => {
+    if (response.ok) {
+      console.log("Consent sent to Securiti UCM");
+    } else {
+      console.error("Failed to send consent", response.statusText);
+    }
+  });
     }
 
     
