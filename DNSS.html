@@ -206,12 +206,12 @@
       'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
       
     },
-  
-
     body: JSON.stringify({
-    window.setConsentBannerParams(
-  {    uuid: <unique_id>,
-  )},
+    "uuids": {
+        "email": "itsme.sowmyashree@gmail.com",
+        "ssn": "AAA-GGG-SSSS",
+        "crn": "1122345"
+    },
     "activity_timestamp": 1744915200,
     "expiry_date": "09-23-2025",
     "consent_source": "Consent API",
@@ -242,6 +242,40 @@
     function rejectCookies() {
       alert("You have rejected cookies!");
       document.getElementById('cookieBanner').style.display = 'none';
+       fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '30yi9UE8yvuRV819xRK7KQB8yClLsJJS4PUwGBPf',
+      'X-API-SECRET' : '0Ey83J6fv4cCvsTwZHx7sPWam50IqdR1xLW2tioj',
+      'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
+      
+    },
+    body: JSON.stringify({
+    "uuids": {
+        "email": "itsme.sowmyashree@gmail.com",
+        "ssn": "AAA-GGG-SSSS",
+        "crn": "1122345"
+    },
+    "activity_timestamp": 1744915200,
+    "expiry_date": "09-23-2025",
+    "consent_source": "Consent API",
+    "consent_info": [
+        {           
+            "processing_purpose_id": 23,
+            "processing_purpose_name": "Cookie_Consent",  
+            "consented_items": [
+                {
+                    "consent_purpose_id": 23,
+                    "consent_purpose_name": "accept cookie",   
+                    "consent_granted": false,
+                    "consent_status": "Rejected"
+                }
+            ]
+        }
+    ]
+})
+  })
     }
 
     
@@ -249,6 +283,11 @@
 }
 
   </script>
+
+
+
+
+
 
 </body>
 </html>
