@@ -198,9 +198,7 @@
       document.getElementById('cookieBanner').style.display = 'none';
       console.log("Entering to record the consent")
       var s = document.createElement('script');
-        s.addEventListener('load', function() {
-        window.setConsentBannerParams({uuid: <unique id> });
-    });
+       
 
       fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
     method: 'POST',
