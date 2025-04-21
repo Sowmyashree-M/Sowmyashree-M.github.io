@@ -198,6 +198,7 @@
       document.getElementById('cookieBanner').style.display = 'none';
       console.log("Entering to record the consent")
       var s = document.createElement('script');
+      var uuid;
       s.addEventListener('load', function() {
         window.setConsentBannerParams({uuid: <unique id> });
       });
