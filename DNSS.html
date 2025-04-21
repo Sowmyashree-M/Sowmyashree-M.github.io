@@ -199,6 +199,7 @@
       console.log("Entering to record the consent")
       var s = document.createElement('script');
       s.addEventListener('load', function() {
+        window.setConsentBannerParams({uuid: <unique id> });
       });
 
       fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
@@ -212,7 +213,7 @@
     },
     body: JSON.stringify({
  "uuids": {
-        "email": "itsme.sowmyashree@gmail.com"
+        "email": uuid
        
     },
     "activity_timestamp": 1744915200,
