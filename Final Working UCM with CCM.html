@@ -199,7 +199,7 @@
       console.log("Entering to record the consent")
     function getVisitorId() {
     const localStorageKey = 'visitor_id';
-
+    const start = Date.now();
     // Check if ID already exists
     let visitorId = localStorage.getItem(localStorageKey);
 
