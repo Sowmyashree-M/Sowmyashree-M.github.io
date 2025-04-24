@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px; /* Adjust as needed */
+  height: 34px; /* Adjust as needed */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3; /* Adjust as needed */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(26px);
+}
+</style>
+</head>
+<body>
+
+<h2>Cookie Preference</h2>
+
+<p>We use different types of cookies to optimize your experience on our website.Click on the categories below to learn more about their purpose.You may choose which types of cookies to allow and can change your prefrences at any time. Remember that disabling cookies may affect your experience on the website. You can learn more about how we use cookies by visiting our cookie policy.</p>
+<div>
+
+<label class="switch">
+<input type="checkbox" id="toggleSwitch">
+<span class="slider"></span>
+</label>
+</div>
+<p id="status">Status: <span id="statusValue"></span></p>
+<label class="switch">
+<input type="checkbox" id="toggleSwitch1">
+<span class="slider"></span>
+</label>
+<p id="status">Status: <span id="statusValue1"></span></p>
+<label class="switch">
+<input type="checkbox" id="toggleSwitch2">
+<span class="slider"></span>
+</label>
+<p id="status">Status: <span id="statusValue2"></span></p>
+
+<label class="switch">
+<input type="checkbox" id="toggleSwitch3">
+<span class="slider"></span>
+</label>
+<p id="status">Status: <span id="statusValue3"></span></p>
+
+
+<script>
+const toggleSwitch = document.getElementById('toggleSwitch');
+const statusValue = document.getElementById('statusValue');
+const toggleSwitch1 = document.getElementById('toggleSwitch1');
+const statusValue1 = document.getElementById('statusValue1');
+
+const toggleSwitch2 = document.getElementById('toggleSwitch2');
+const statusValue2 = document.getElementById('statusValue2');
+
+const toggleSwitch3 = document.getElementById('toggleSwitch3');
+const statusValue3 = document.getElementById('statusValue3');
+
+
+toggleSwitch.addEventListener('change', function() {
+  if (this.checked) {
+    // "On" state - Accepted
+    statusValue.textContent = "Accepted";
+    // Implement your acceptance logic here (e.g., calling a function, updating a database, etc.)
+  } else {
+    // "Off" state - Rejected
+    statusValue.textContent = "Rejected";
+    // Implement your rejection logic here
+  }
+});
+
+
+toggleSwitch1.addEventListener('change', function() {
+  if (this.checked) {
+    // "On" state - Accepted
+    statusValue1.textContent = "Accepted";
+    // Implement your acceptance logic here (e.g., calling a function, updating a database, etc.)
+  } else {
+    // "Off" state - Rejected
+    statusValue1.textContent = "Rejected";
+    // Implement your rejection logic here
+  }
+});
+
+
+
+
+toggleSwitch2.addEventListener('change', function() {
+  if (this.checked) {
+    // "On" state - Accepted
+    statusValue2.textContent = "Accepted";
+    // Implement your acceptance logic here (e.g., calling a function, updating a database, etc.)
+  } else {
+    // "Off" state - Rejected
+    statusValue2.textContent = "Rejected";
+    // Implement your rejection logic here
+  }
+});
+
+
+
+toggleSwitch3.addEventListener('change', function() {
+  if (this.checked) {
+    // "On" state - Accepted
+    statusValue3.textContent = "Accepted";
+    // Implement your acceptance logic here (e.g., calling a function, updating a database, etc.)
+  } else {
+    // "Off" state - Rejected
+    statusValue3.textContent = "Rejected";
+    // Implement your rejection logic here
+  }
+});
+</script>
+
+
+
+
+
+
+
+</body>
+</html> 
