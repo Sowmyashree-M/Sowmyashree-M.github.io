@@ -136,6 +136,13 @@
     .cookie-banner button:hover {
       opacity: 0.9;
     }
+
+ 
+    .cookiepreferencelink{
+        margin-left: 0;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
@@ -177,7 +184,6 @@
         <button type="submit">Submit</button>
         <button type="submit" onclick="myfunction()">Preference Center</button>
         <button type="submit" onclick="myfunction1()">Data Subject Rights</button>
-        
     </form>
 
    
@@ -185,8 +191,8 @@
     <p>We use cookies to improve your experience on our site. Please let us know your preferences.</p>
     <div class="buttons">
       <button onclick="acceptCookies()">Accept</button>
-      <button  class="reject"  onclick="rejectCookies()">Reject</button>
-       <a href="https://www.w3schools.com">W3Schools</a>CookiePreference</p>
+      <button class="reject" onclick="rejectCookies()">Reject</button>
+      <a  class="cookiepreferencelink" href="https://www.w3schools.com">W3Schools</a></p>
     </div>
   </div>
 
@@ -201,7 +207,7 @@
       console.log("Entering to record the consent")
     function getVisitorId() {
     const localStorageKey = 'visitor_id';
-    const start = Date.now();
+
     // Check if ID already exists
     let visitorId = localStorage.getItem(localStorageKey);
 
@@ -219,8 +225,6 @@ const visitorId = getVisitorId();
 console.log("Visitor ID:", visitorId);
 
 
-
-
       fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
     method: 'POST',
     headers: {
@@ -235,7 +239,7 @@ console.log("Visitor ID:", visitorId);
         "uuid": visitorId
        
     },
-    "activity_timestamp": start,
+    "activity_timestamp": 1744915200,
     "expiry_date": "09-23-2025",
     "consent_source": "Consent API",
     "consent_info": [
@@ -244,8 +248,8 @@ console.log("Visitor ID:", visitorId);
             "processing_purpose_name": "Cookie_Consent",  
             "consented_items": [
                 {
-                    "consent_purpose_id": 25,
-                    "consent_purpose_name": "Accepted",   
+                    "consent_purpose_id": 23,
+                    "consent_purpose_name": "accept cookie",   
                     "consent_granted": true,
                     "consent_status": "Granted"
                 }
@@ -260,37 +264,12 @@ console.log("Visitor ID:", visitorId);
       console.error("Failed to send consent", response.statusText);
     }
   });
-    }
-
-  </script>
 
 
-    <script>
     function rejectCookies() {
       alert("You have rejected cookies!");
       document.getElementById('cookieBanner').style.display = 'none';
-        console.log("Entering to record the consent");
-    function getVisitorId() {
-    const localStorageKey = 'visitor_id';
-     const start1 = Date.now();
-    // Check if ID already exists
-    let visitorId = localStorage.getItem(localStorageKey);
-
-    if (!visitorId) {
-        // Generate new UUID
-        visitorId = crypto.randomUUID(); // This creates a v4 UUID
-        localStorage.setItem(localStorageKey, visitorId);
-    }
-
-    return visitorId;
-}
-
-// Usage
-const visitorId = getVisitorId();
-console.log("Visitor ID:", visitorId);
-
-
-      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+       fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -300,11 +279,10 @@ console.log("Visitor ID:", visitorId);
       
     },
     body: JSON.stringify({
- "uuids": {
+    "uuids": {
         "uuid": visitorId
-       
     },
-    "activity_timestamp": start1,
+    "activity_timestamp": 1744915200,
     "expiry_date": "09-23-2025",
     "consent_source": "Consent API",
     "consent_info": [
@@ -313,25 +291,23 @@ console.log("Visitor ID:", visitorId);
             "processing_purpose_name": "Cookie_Consent",  
             "consented_items": [
                 {
-                    "consent_purpose_id": 24,
-                    "consent_purpose_name": "Rejected",   
+                    "consent_purpose_id": 23,
+                    "consent_purpose_name": "accept cookie",   
                     "consent_granted": false,
-                    "consent_status": "Declined"
+                    "consent_status": "Rejected"
                 }
             ]
         }
     ]
 })
-  }).then(response => {
-    if (response.ok) {
-      console.log("Consent sent to Securiti UCM");
-    } else {
-      console.error("Failed to send consent", response.statusText);
+  })
     }
-  });
-    }
-    </script>   
 
+    
+    
+}
+
+  </script>
 
 
 
