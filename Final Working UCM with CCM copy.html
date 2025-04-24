@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Banner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            justify-content: flex;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+    
+        }
+
+        .checkbox-group label {
+            margin-top: 10px;
+            font-weight: normal;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .cookie-banner p {
+      margin: 0;
+      font-size: 0.9em;
+      flex: 1;
+      text-align: left;
+    }
+
+    .cookie-banner .buttons {
+      display: flex;
+      gap: 0.5em;
+    }
+
+    .cookie-banner button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      font-size: 0.9em;
+      border-radius: 5px;
+    }
+
+    .cookie-banner button.reject {
+      background-color: #f44336;
+    }
+
+    .cookie-banner button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contact Us</h1>
+  <!--<form action="mailto:itsme.sowmyashree@gmail.com" method="post" enctype="text/plain">-->
+    <!--<form action="https://itsme.sowmyashree@gmail.com" method="POST">-->
+
+<form action="https://formsubmit.co/itsme.sowmyashree@gmail.com" method="POST">
+        <!--<a href=”mailto:itsme.sowmyashree@gmail.com”>submit</a>-->
+       
+
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" required>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+<h4>Check Box </h4>
+        <div class="checkbox-group">
+           
+
+            <div>
+                <label>
+                    <input type="checkbox" name="contact-method[]" value="Newsletter"> Sign Up for Newsletter 
+                </label>
+            </div>
+           
+
+
+
+        </div>
+
+        <button type="submit">Submit</button>
+        <button type="submit" onclick="myfunction()">Preference Center</button>
+        <button type="submit" onclick="myfunction1()">Data Subject Rights</button>
+    </form>
+
+   
+  <div class="cookie-banner" id="cookieBanner">
+    <p>We use cookies to improve your experience on our site. Please let us know your preferences.</p>
+    <div class="buttons">
+      <button onclick="acceptCookies()">Accept</button>
+      <button class = "reject" onclick="rejectCookies()">Reject</button>
+    </div>
+  </div>
+
+  
+
+
+
+<script>
+    function acceptCookies() {
+      alert("You have accepted cookies!");
+      document.getElementById('cookieBanner').style.display = 'none';
+      console.log("Entering to record the consent")
+    function getVisitorId() {
+    const localStorageKey = 'visitor_id';
+
+    // Check if ID already exists
+    let visitorId = localStorage.getItem(localStorageKey);
+
+    if (!visitorId) {
+        // Generate new UUID
+        visitorId = crypto.randomUUID(); // This creates a v4 UUID
+        localStorage.setItem(localStorageKey, visitorId);
+    }
+
+    return visitorId;
+}
+
+// Usage
+const visitorId = getVisitorId();
+console.log("Visitor ID:", visitorId);
+
+
+      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '30yi9UE8yvuRV819xRK7KQB8yClLsJJS4PUwGBPf',
+      'X-API-SECRET' : '0Ey83J6fv4cCvsTwZHx7sPWam50IqdR1xLW2tioj',
+      'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
+      
+    },
+    body: JSON.stringify({
+ "uuids": {
+        "uuid": visitorId
+       
+    },
+    "activity_timestamp": 1744915200,
+    "expiry_date": "09-23-2025",
+    "consent_source": "Consent API",
+    "consent_info": [
+        {           
+            "processing_purpose_id": 23,
+            "processing_purpose_name": "Cookie_Consent",  
+            "consented_items": [
+                {
+                    "consent_purpose_id": 23,
+                    "consent_purpose_name": "accept cookie",   
+                    "consent_granted": true,
+                    "consent_status": "Granted"
+                }
+            ]
+        }
+    ]
+})
+  }).then(response => {
+    if (response.ok) {
+      console.log("Consent sent to Securiti UCM");
+    } else {
+      console.error("Failed to send consent", response.statusText);
+    }
+  });
+
+  </script>
+
+
+    <script>
+    function rejectCookies() {
+      alert("You have rejected cookies!");
+      document.getElementById('cookieBanner').style.display = 'none';
+        console.log("Entering to record the consent");
+    function getVisitorId() {
+    const localStorageKey = 'visitor_id';
+
+    // Check if ID already exists
+    let visitorId = localStorage.getItem(localStorageKey);
+
+    if (!visitorId) {
+        // Generate new UUID
+        visitorId = crypto.randomUUID(); // This creates a v4 UUID
+        localStorage.setItem(localStorageKey, visitorId);
+    }
+
+    return visitorId;
+}
+
+// Usage
+const visitorId = getVisitorId();
+console.log("Visitor ID:", visitorId);
+
+
+      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '30yi9UE8yvuRV819xRK7KQB8yClLsJJS4PUwGBPf',
+      'X-API-SECRET' : '0Ey83J6fv4cCvsTwZHx7sPWam50IqdR1xLW2tioj',
+      'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
+      
+    },
+    body: JSON.stringify({
+ "uuids": {
+        "uuid": visitorId
+       
+    },
+    "activity_timestamp": 1744915200,
+    "expiry_date": "09-23-2025",
+    "consent_source": "Consent API",
+    "consent_info": [
+        {           
+            "processing_purpose_id": 23,
+            "processing_purpose_name": "Cookie_Consent",  
+            "consented_items": [
+                {
+                    "consent_purpose_id": 23,
+                    "consent_purpose_name": "accept cookie",   
+                    "consent_granted": false,
+                    "consent_status": "Declined"
+                }
+            ]
+        }
+    ]
+})
+  }).then(response => {
+    if (response.ok) {
+      console.log("Consent sent to Securiti UCM");
+    } else {
+      console.error("Failed to send consent", response.statusText);
+    }
+  });
+    }
+    </script>   
+
+
+
+
+
+
+
+</body>
+</html>
