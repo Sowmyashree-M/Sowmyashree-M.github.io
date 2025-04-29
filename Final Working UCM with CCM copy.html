@@ -270,7 +270,8 @@ console.log("Epoc Time:",epochTimeInMilliseconds);
         console.log("Entering to record the consent");
     function getVisitorId() {
     const localStorageKey = 'visitor_id';
-
+const epochTimeInMilliseconds = Date.now();
+console.log("Epoc Time:",epochTimeInMilliseconds);
     // Check if ID already exists
     let visitorId = localStorage.getItem(localStorageKey);
 
