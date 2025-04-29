@@ -216,7 +216,8 @@
 // Usage
 const visitorId = getVisitorId();
 console.log("Visitor ID:", visitorId);
-
+const epochTimeInMilliseconds = Date.now();
+console.log(epochTimeInMilliseconds);
 
       fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
     method: 'POST',
