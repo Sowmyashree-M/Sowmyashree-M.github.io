@@ -291,7 +291,12 @@ console.log("Epoch Seconds:", epochSeconds);
 // Usage
 const visitorId = getVisitorId();
 console.log("Visitor ID:", visitorId);
+const epochMilliseconds = Date.now();
+console.log("Epoch Milliseconds:", epochMilliseconds);
 
+// Get the current epoch time in seconds (divide by 1000)
+const epochSeconds = Math.floor(Date.now() / 1000);
+console.log("Epoch Seconds:", epochSeconds);
       fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
     method: 'POST',
     headers: {
@@ -306,7 +311,7 @@ console.log("Visitor ID:", visitorId);
         "uuid": visitorId
        
     },
-    "activity_timestamp": 1746003249,
+    "activity_timestamp": epochSeconds,
     "expiry_date": "09-23-2025",
     "consent_source": "Consent API",
     "consent_info": [
