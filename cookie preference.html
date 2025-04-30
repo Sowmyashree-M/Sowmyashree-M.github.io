@@ -137,7 +137,12 @@ toggleSwitch.addEventListener('change', function() {
 // Usage
 const visitorId = getVisitorId();
 console.log("Visitor ID:", visitorId);
+const epochMilliseconds = Date.now();
+console.log("Epoch Milliseconds:", epochMilliseconds);
 
+// Get the current epoch time in seconds (divide by 1000)
+const epochSeconds = Math.floor(Date.now() / 1000);
+console.log("Epoch Seconds:", epochSeconds);
 
       fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
     method: 'POST',
@@ -153,7 +158,7 @@ console.log("Visitor ID:", visitorId);
         "uuid": visitorId
        
     },
-    "activity_timestamp": 1744915200,
+    "activity_timestamp": epochSeconds,
     "expiry_date": "09-23-2025",
     "consent_source": "Consent API",
     "consent_info": [
@@ -201,7 +206,12 @@ function getVisitorId() {
 // Usage
 const visitorId = getVisitorId();
 console.log("Visitor ID:", visitorId);
+const epochMilliseconds = Date.now();
+console.log("Epoch Milliseconds:", epochMilliseconds);
 
+// Get the current epoch time in seconds (divide by 1000)
+const epochSeconds = Math.floor(Date.now() / 1000);
+console.log("Epoch Seconds:", epochSeconds);
 
       fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
     method: 'POST',
@@ -217,7 +227,7 @@ console.log("Visitor ID:", visitorId);
         "uuid": visitorId
        
     },
-    "activity_timestamp": 1744915200,
+    "activity_timestamp": epochSeconds,
     "expiry_date": "09-23-2025",
     "consent_source": "Consent API",
     "consent_info": [
@@ -251,25 +261,280 @@ toggleSwitch1.addEventListener('change', function() {
     // "On" state - Accepted
     statusValue1.textContent = "Accepted";
     // Implement your acceptance logic here (e.g., calling a function, updating a database, etc.)
+function getVisitorId() {
+    const localStorageKey = 'visitor_id';
+
+    // Check if ID already exists
+    let visitorId = localStorage.getItem(localStorageKey);
+
+    if (!visitorId) {
+        // Generate new UUID
+        visitorId = crypto.randomUUID(); // This creates a v4 UUID
+        localStorage.setItem(localStorageKey, visitorId);
+    }
+
+    return visitorId;
+}
+
+// Usage
+const visitorId = getVisitorId();
+console.log("Visitor ID:", visitorId);
+const epochMilliseconds = Date.now();
+console.log("Epoch Milliseconds:", epochMilliseconds);
+
+// Get the current epoch time in seconds (divide by 1000)
+const epochSeconds = Math.floor(Date.now() / 1000);
+console.log("Epoch Seconds:", epochSeconds);
+
+      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '30yi9UE8yvuRV819xRK7KQB8yClLsJJS4PUwGBPf',
+      'X-API-SECRET' : '0Ey83J6fv4cCvsTwZHx7sPWam50IqdR1xLW2tioj',
+      'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
+      
+    },
+    body: JSON.stringify({
+ "uuids": {
+        "uuid": visitorId
+       
+    },
+    "activity_timestamp": epochSeconds,
+    "expiry_date": "09-23-2025",
+    "consent_source": "Consent API",
+    "consent_info": [
+        {           
+            "processing_purpose_id": 24,
+            "processing_purpose_name": "Cookie_Preference",  
+            "consented_items": [
+                {
+                    "consent_purpose_id": 29,
+                    "consent_purpose_name": "Advertisement",   
+                    "consent_granted": true,
+                    "consent_status": "Granted"
+                }
+            ]
+        }
+    ]
+})
+  }).then(response => {
+    if (response.ok) {
+      console.log("Consent sent to Securiti UCM");
+    } else {
+      console.error("Failed to send consent", response.statusText);
+    }
+  });
   } else {
     // "Off" state - Rejected
-    statusValue1.textContent = "Rejected";
+    statusValue.textContent = "Rejected";
     // Implement your rejection logic here
+
+function getVisitorId() {
+    const localStorageKey = 'visitor_id';
+
+    // Check if ID already exists
+    let visitorId = localStorage.getItem(localStorageKey);
+
+    if (!visitorId) {
+        // Generate new UUID
+        visitorId = crypto.randomUUID(); // This creates a v4 UUID
+        localStorage.setItem(localStorageKey, visitorId);
+    }
+
+    return visitorId;
+}
+
+// Usage
+const visitorId = getVisitorId();
+console.log("Visitor ID:", visitorId);
+const epochMilliseconds = Date.now();
+console.log("Epoch Milliseconds:", epochMilliseconds);
+
+// Get the current epoch time in seconds (divide by 1000)
+const epochSeconds = Math.floor(Date.now() / 1000);
+console.log("Epoch Seconds:", epochSeconds);
+
+      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '30yi9UE8yvuRV819xRK7KQB8yClLsJJS4PUwGBPf',
+      'X-API-SECRET' : '0Ey83J6fv4cCvsTwZHx7sPWam50IqdR1xLW2tioj',
+      'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
+      
+    },
+    body: JSON.stringify({
+ "uuids": {
+        "uuid": visitorId
+       
+    },
+    "activity_timestamp": epochSeconds,
+    "expiry_date": "09-23-2025",
+    "consent_source": "Consent API",
+    "consent_info": [
+        {           
+            "processing_purpose_id": 24,
+            "processing_purpose_name": "Cookie_Preference",  
+            "consented_items": [
+                {
+                    "consent_purpose_id": 29,
+                    "consent_purpose_name": "Advertisement",   
+                    "consent_granted": false,
+                    "consent_status": "Declined"
+                }
+            ]
+        }
+    ]
+})
+  }).then(response => {
+    if (response.ok) {
+      console.log("Consent sent to Securiti UCM");
+    } else {
+      console.error("Failed to send consent", response.statusText);
+    }
+  });
   }
 });
-
-
 
 
 toggleSwitch2.addEventListener('change', function() {
   if (this.checked) {
     // "On" state - Accepted
     statusValue2.textContent = "Accepted";
-    // Implement your acceptance logic here (e.g., calling a function, updating a database, etc.)
+   function getVisitorId() {
+    const localStorageKey = 'visitor_id';
+
+    // Check if ID already exists
+    let visitorId = localStorage.getItem(localStorageKey);
+
+    if (!visitorId) {
+        // Generate new UUID
+        visitorId = crypto.randomUUID(); // This creates a v4 UUID
+        localStorage.setItem(localStorageKey, visitorId);
+    }
+
+    return visitorId;
+}
+
+// Usage
+const visitorId = getVisitorId();
+console.log("Visitor ID:", visitorId);
+const epochMilliseconds = Date.now();
+console.log("Epoch Milliseconds:", epochMilliseconds);
+
+// Get the current epoch time in seconds (divide by 1000)
+const epochSeconds = Math.floor(Date.now() / 1000);
+console.log("Epoch Seconds:", epochSeconds);
+
+      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '30yi9UE8yvuRV819xRK7KQB8yClLsJJS4PUwGBPf',
+      'X-API-SECRET' : '0Ey83J6fv4cCvsTwZHx7sPWam50IqdR1xLW2tioj',
+      'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
+      
+    },
+    body: JSON.stringify({
+ "uuids": {
+        "uuid": visitorId
+       
+    },
+    "activity_timestamp": epochSeconds,
+    "expiry_date": "09-23-2025",
+    "consent_source": "Consent API",
+    "consent_info": [
+        {           
+            "processing_purpose_id": 24,
+            "processing_purpose_name": "Cookie_Preference",  
+            "consented_items": [
+                {
+                    "consent_purpose_id": 30,
+                    "consent_purpose_name": "Analytics and Customization",   
+                    "consent_granted": true,
+                    "consent_status": "Granted"
+                }
+            ]
+        }
+    ]
+})
+  }).then(response => {
+    if (response.ok) {
+      console.log("Consent sent to Securiti UCM");
+    } else {
+      console.error("Failed to send consent", response.statusText);
+    }
+  });
   } else {
     // "Off" state - Rejected
-    statusValue2.textContent = "Rejected";
+    statusValue.textContent = "Rejected";
     // Implement your rejection logic here
+
+function getVisitorId() {
+    const localStorageKey = 'visitor_id';
+
+    // Check if ID already exists
+    let visitorId = localStorage.getItem(localStorageKey);
+
+    if (!visitorId) {
+        // Generate new UUID
+        visitorId = crypto.randomUUID(); // This creates a v4 UUID
+        localStorage.setItem(localStorageKey, visitorId);
+    }
+
+    return visitorId;
+}
+
+// Usage
+const visitorId = getVisitorId();
+console.log("Visitor ID:", visitorId);
+const epochMilliseconds = Date.now();
+console.log("Epoch Milliseconds:", epochMilliseconds);
+
+// Get the current epoch time in seconds (divide by 1000)
+const epochSeconds = Math.floor(Date.now() / 1000);
+console.log("Epoch Seconds:", epochSeconds);
+
+      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '30yi9UE8yvuRV819xRK7KQB8yClLsJJS4PUwGBPf',
+      'X-API-SECRET' : '0Ey83J6fv4cCvsTwZHx7sPWam50IqdR1xLW2tioj',
+      'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
+      
+    },
+    body: JSON.stringify({
+ "uuids": {
+        "uuid": visitorId
+       
+    },
+    "activity_timestamp": epochSeconds,
+    "expiry_date": "09-23-2025",
+    "consent_source": "Consent API",
+    "consent_info": [
+        {           
+            "processing_purpose_id": 24,
+            "processing_purpose_name": "Cookie_Preference",  
+            "consented_items": [
+                {
+                    "consent_purpose_id": 30,
+                    "consent_purpose_name": "Analytics and Customization",   
+                    "consent_granted": false,
+                    "consent_status": "Declined"
+                }
+            ]
+        }
+    ]
+})
+  }).then(response => {
+    if (response.ok) {
+      console.log("Consent sent to Securiti UCM");
+    } else {
+      console.error("Failed to send consent", response.statusText);
+    }
+  });
   }
 });
 
@@ -279,11 +544,139 @@ toggleSwitch3.addEventListener('change', function() {
   if (this.checked) {
     // "On" state - Accepted
     statusValue3.textContent = "Accepted";
-    // Implement your acceptance logic here (e.g., calling a function, updating a database, etc.)
+    function getVisitorId() {
+    const localStorageKey = 'visitor_id';
+
+    // Check if ID already exists
+    let visitorId = localStorage.getItem(localStorageKey);
+
+    if (!visitorId) {
+        // Generate new UUID
+        visitorId = crypto.randomUUID(); // This creates a v4 UUID
+        localStorage.setItem(localStorageKey, visitorId);
+    }
+
+    return visitorId;
+}
+
+// Usage
+const visitorId = getVisitorId();
+console.log("Visitor ID:", visitorId);
+const epochMilliseconds = Date.now();
+console.log("Epoch Milliseconds:", epochMilliseconds);
+
+// Get the current epoch time in seconds (divide by 1000)
+const epochSeconds = Math.floor(Date.now() / 1000);
+console.log("Epoch Seconds:", epochSeconds);
+
+      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '30yi9UE8yvuRV819xRK7KQB8yClLsJJS4PUwGBPf',
+      'X-API-SECRET' : '0Ey83J6fv4cCvsTwZHx7sPWam50IqdR1xLW2tioj',
+      'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
+      
+    },
+    body: JSON.stringify({
+ "uuids": {
+        "uuid": visitorId
+       
+    },
+    "activity_timestamp": epochSeconds,
+    "expiry_date": "09-23-2025",
+    "consent_source": "Consent API",
+    "consent_info": [
+        {           
+            "processing_purpose_id": 24,
+            "processing_purpose_name": "Cookie_Preference",  
+            "consented_items": [
+                {
+                    "consent_purpose_id": 31,
+                    "consent_purpose_name": "performance",   
+                    "consent_granted": true,
+                    "consent_status": "Granted"
+                }
+            ]
+        }
+    ]
+})
+  }).then(response => {
+    if (response.ok) {
+      console.log("Consent sent to Securiti UCM");
+    } else {
+      console.error("Failed to send consent", response.statusText);
+    }
+  });
   } else {
     // "Off" state - Rejected
-    statusValue3.textContent = "Rejected";
+    statusValue.textContent = "Rejected";
     // Implement your rejection logic here
+
+function getVisitorId() {
+    const localStorageKey = 'visitor_id';
+
+    // Check if ID already exists
+    let visitorId = localStorage.getItem(localStorageKey);
+
+    if (!visitorId) {
+        // Generate new UUID
+        visitorId = crypto.randomUUID(); // This creates a v4 UUID
+        localStorage.setItem(localStorageKey, visitorId);
+    }
+
+    return visitorId;
+}
+
+// Usage
+const visitorId = getVisitorId();
+console.log("Visitor ID:", visitorId);
+const epochMilliseconds = Date.now();
+console.log("Epoch Milliseconds:", epochMilliseconds);
+
+// Get the current epoch time in seconds (divide by 1000)
+const epochSeconds = Math.floor(Date.now() / 1000);
+console.log("Epoch Seconds:", epochSeconds);
+
+      fetch('https://app5.securiti.ai/privaci/v1/consentapi/consent_upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': '30yi9UE8yvuRV819xRK7KQB8yClLsJJS4PUwGBPf',
+      'X-API-SECRET' : '0Ey83J6fv4cCvsTwZHx7sPWam50IqdR1xLW2tioj',
+      'X-TIDENT' : '0a1d65c1-2841-4043-be8a-a2f651e21b79'
+      
+    },
+    body: JSON.stringify({
+ "uuids": {
+        "uuid": visitorId
+       
+    },
+    "activity_timestamp": epochSeconds,
+    "expiry_date": "09-23-2025",
+    "consent_source": "Consent API",
+    "consent_info": [
+        {           
+            "processing_purpose_id": 24,
+            "processing_purpose_name": "Cookie_Preference",  
+            "consented_items": [
+                {
+                    "consent_purpose_id": 31,
+                    "consent_purpose_name": "performance",   
+                    "consent_granted": false,
+                    "consent_status": "Declined"
+                }
+            ]
+        }
+    ]
+})
+  }).then(response => {
+    if (response.ok) {
+      console.log("Consent sent to Securiti UCM");
+    } else {
+      console.error("Failed to send consent", response.statusText);
+    }
+  });
   }
 });
 </script>
