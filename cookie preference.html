@@ -685,8 +685,18 @@ console.log("Epoch Seconds:", epochSeconds);
 });
 </script>
 
+<form id="myForm">
+  <button type="button" id="closeBtn">Close Form</button>
+</form>
 
- <button type="submit">Submit</button>
+<script>
+  const form = document.getElementById('myForm');
+  const closeButton = document.getElementById('closeBtn');
+
+  closeButton.addEventListener('click', () => {
+    form.style.display = 'none'; 
+  });
+</script>
 
 
 
