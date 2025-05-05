@@ -78,11 +78,15 @@ input:checked + .slider:before {
 </label>
 </div>
 <p id="status">Status: <span id="statusValue"></span></p>
+
+  
 <label class="switch">
 <input type="checkbox" id="toggleSwitch1">
 <span class="slider"></span>
 </label>
 <p id="status">Status: <span id="statusValue1"></span></p>
+
+  
 <label class="switch">
 <input type="checkbox" id="toggleSwitch2">
 <span class="slider"></span>
@@ -185,7 +189,7 @@ console.log("Epoch Seconds:", epochSeconds);
   });
   } else {
     // "Off" state - Rejected
-    statusValue1.textContent = "Rejected";
+    statusValue.textContent = "Rejected";
     // Implement your rejection logic here
 
 function getVisitorId() {
